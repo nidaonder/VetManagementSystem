@@ -2,8 +2,7 @@ package com.nidaonder.VetManagementSystem.dto.response;
 
 import lombok.*;
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class DoctorResponse {
