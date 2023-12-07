@@ -3,21 +3,18 @@ package com.nidaonder.VetManagementSystem.api;
 import com.nidaonder.VetManagementSystem.business.abstracts.IDoctorService;
 import com.nidaonder.VetManagementSystem.dto.request.DoctorRequest;
 import com.nidaonder.VetManagementSystem.dto.response.DoctorResponse;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api/v1/doctors")
 public class DoctorController {
-    private final IDoctorService doctorService;
 
-    @Autowired
-    public DoctorController(IDoctorService doctorService) {
-        this.doctorService = doctorService;
-    }
+    private final IDoctorService doctorService;
 
     @GetMapping()
     @ResponseStatus(HttpStatus.OK)

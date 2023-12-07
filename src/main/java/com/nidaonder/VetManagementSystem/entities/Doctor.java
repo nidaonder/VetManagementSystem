@@ -1,5 +1,6 @@
 package com.nidaonder.VetManagementSystem.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -7,6 +8,8 @@ import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity
 @Table(name = "doctors")
@@ -32,4 +35,8 @@ public class Doctor {
     private String address;
 
     private String city;
+
+    @OneToMany(mappedBy = "doctor")
+    @JsonIgnore
+    private List<AvailableDate> availableDates;
 }
