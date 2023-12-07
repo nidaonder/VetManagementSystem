@@ -42,11 +42,12 @@ public class DoctorManager implements IDoctorService {
     @Override
     public DoctorResponse update(long id, DoctorRequest request) {
         Optional<Doctor> doctorFromDb = doctorRepo.findById(id);
-        Optional<Doctor> isDoctorExist = doctorRepo.findByMail(request.getMail());
-        if (doctorFromDb.isEmpty()){
+        if (doctorFromDb.isEmpty()) {
             throw new RuntimeException("Doctor not found!");
         }
-        if (isDoctorExist.isPresent()){
+        String newMail = request.getMail();
+        Optional<Doctor> newDoctor = doctorRepo.findByMail(newMail);
+        if (newDoctor.isPresent() && newDoctor.get().getId() != id) {
             throw new RuntimeException("This doctor has been previously registered in the system!");
         }
         Doctor doctor = doctorFromDb.get();

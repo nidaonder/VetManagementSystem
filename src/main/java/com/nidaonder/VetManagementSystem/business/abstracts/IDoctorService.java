@@ -2,7 +2,6 @@ package com.nidaonder.VetManagementSystem.business.abstracts;
 
 import com.nidaonder.VetManagementSystem.dto.request.DoctorRequest;
 import com.nidaonder.VetManagementSystem.dto.response.DoctorResponse;
-import com.nidaonder.VetManagementSystem.entities.Doctor;
 
 import java.util.List;
 

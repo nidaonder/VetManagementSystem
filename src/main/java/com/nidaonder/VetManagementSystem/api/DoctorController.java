@@ -48,6 +48,4 @@ public class DoctorController {
     public void delete(@PathVariable("id") long id){
         doctorService.deleteById(id);
     }
-
-
 }
