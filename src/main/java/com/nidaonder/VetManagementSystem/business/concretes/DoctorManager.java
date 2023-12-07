@@ -1,6 +1,9 @@
 package com.nidaonder.VetManagementSystem.business.concretes;
 
 import com.nidaonder.VetManagementSystem.business.abstracts.IDoctorService;
+import com.nidaonder.VetManagementSystem.core.exception.DataExistsException;
+import com.nidaonder.VetManagementSystem.core.exception.NotFoundException;
+import com.nidaonder.VetManagementSystem.core.utilities.Msg;
 import com.nidaonder.VetManagementSystem.dao.DoctorRepo;
 import com.nidaonder.VetManagementSystem.dto.request.DoctorRequest;
 import com.nidaonder.VetManagementSystem.dto.response.DoctorResponse;
@@ -26,7 +29,7 @@ public class DoctorManager implements IDoctorService {
 
     @Override
     public DoctorResponse getById(long id) {
-        return doctorMapper.asOutput(doctorRepo.findById(id).orElseThrow(() -> new RuntimeException("Doctor not found!")));
+        return doctorMapper.asOutput(doctorRepo.findById(id).orElseThrow(() -> new NotFoundException(Msg.NOT_FOUND)));
     }
 
     @Override
@@ -36,19 +39,19 @@ public class DoctorManager implements IDoctorService {
             Doctor doctorSaved = doctorRepo.save(doctorMapper.asEntity(request));
             return doctorMapper.asOutput(doctorSaved);
         }
-        throw new RuntimeException("This doctor has been previously registered in the system!");
+        throw new DataExistsException(Msg.DATA_EXISTS);
     }
 
     @Override
     public DoctorResponse update(long id, DoctorRequest request) {
         Optional<Doctor> doctorFromDb = doctorRepo.findById(id);
         if (doctorFromDb.isEmpty()) {
-            throw new RuntimeException("Doctor not found!");
+            throw new NotFoundException(Msg.NOT_FOUND);
         }
         String newMail = request.getMail();
         Optional<Doctor> newDoctor = doctorRepo.findByMail(newMail);
         if (newDoctor.isPresent() && newDoctor.get().getId() != id) {
-            throw new RuntimeException("This doctor has been previously registered in the system!");
+            throw new DataExistsException(Msg.DATA_EXISTS);
         }
         Doctor doctor = doctorFromDb.get();
         doctorMapper.update(doctor, request);
@@ -61,7 +64,7 @@ public class DoctorManager implements IDoctorService {
         if (doctorFromDb.isPresent()){
             doctorRepo.delete(doctorFromDb.get());
         } else {
-            throw new RuntimeException("Doctor not found!");
+            throw new NotFoundException(Msg.NOT_FOUND);
         }
     }
 }
