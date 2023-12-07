@@ -5,7 +5,6 @@ import com.nidaonder.VetManagementSystem.dto.response.DoctorResponse;
 import com.nidaonder.VetManagementSystem.entities.Doctor;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 
