@@ -44,7 +44,18 @@ public class CustomerManager implements ICustomerService {
 
     @Override
     public CustomerResponse update(long id, CustomerRequest request) {
-        return null;
+        Optional<Customer> customerFromDb = customerRepo.findById(id);
+        if (customerFromDb.isEmpty()){
+            throw new NotFoundException(Msg.NOT_FOUND);
+        }
+        String newMail = request.getMail();
+        Optional<Customer> newCustomer = customerRepo.findByMail(newMail);
+        if (newCustomer.isPresent() && newCustomer.get().getId() != id){
+            throw new DataExistsException(Msg.DATA_EXISTS);
+        }
+        Customer customer = customerFromDb.get();
+        customerMapper.update(customer, request);
+        return customerMapper.asOutput(customerRepo.save(customer));
     }
 
     @Override
