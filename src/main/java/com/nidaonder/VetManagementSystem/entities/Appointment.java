@@ -1,27 +1,30 @@
 package com.nidaonder.VetManagementSystem.entities;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "available_date")
+@Table(name = "appointments")
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class AvailableDate {
+@NoArgsConstructor
+public class Appointment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "available_date_id", columnDefinition = "serial")
+    @Column(name = "appointment_id", columnDefinition = "serial")
     private long id;
 
-    @Temporal(TemporalType.DATE)
-    private LocalDate appointmentDate;
+    @Column(columnDefinition = "TIMESTAMP")
+    private LocalDateTime appointmentDate;
+
+    @ManyToOne
+    @JoinColumn(name = "animal_id", referencedColumnName = "animal_id")
+    private Animal animal;
 
     @ManyToOne
     @JoinColumn(name = "doctor_id", referencedColumnName = "doctor_id")
