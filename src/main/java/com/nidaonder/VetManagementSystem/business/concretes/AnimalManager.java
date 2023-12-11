@@ -33,6 +33,14 @@ public class AnimalManager implements IAnimalService {
     }
 
     @Override
+    public List<AnimalResponse> getByCustomer(long id) {
+        if (animalRepo.findByCustomerId(id).isEmpty()){
+            throw new NotFoundException(Msg.NOT_FOUND);
+        }
+        return animalMapper.asOutput(animalRepo.findByCustomerId(id));
+    }
+
+    @Override
     public AnimalResponse create(AnimalRequest request) {
         Optional<Animal> isAnimalExist = animalRepo.findByCustomerIdAndName(request.getCustomer().getId(), request.getName());
         if (isAnimalExist.isEmpty()){
