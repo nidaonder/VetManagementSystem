@@ -38,5 +38,5 @@ public class Doctor {
 
     @OneToMany(mappedBy = "doctor")
     @JsonIgnore
-    private List<AvailableDate> availableDates;
+    private List<AvailableDate> availableDate;
 }
