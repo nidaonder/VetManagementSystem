@@ -12,6 +12,7 @@ import com.nidaonder.VetManagementSystem.mapper.AvailableDateMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -46,11 +47,13 @@ public class AvailableDateManager implements IAvailableDateService {
     @Override
     public AvailableDateResponse update(long id, AvailableDateRequest request) {
         Optional<AvailableDate> dateFromDb = availableDateRepo.findById(id);
-        Optional<AvailableDate> isDateExist = availableDateRepo.findByDoctorIdAndAvailableDate(request.getDoctor().getId(), request.getAvailableDate());
         if (dateFromDb.isEmpty()){
             throw new NotFoundException(Msg.NOT_FOUND);
         }
-        if (isDateExist.isPresent()){
+        long newDoctorId = request.getDoctor().getId();
+        LocalDate newDate = request.getAvailableDate();
+        Optional<AvailableDate> newAvailableDateObj = availableDateRepo.findByDoctorIdAndAvailableDate(newDoctorId, newDate);
+        if (newAvailableDateObj.isPresent() && newAvailableDateObj.get().getId() != id){
             throw new DataExistsException(Msg.DATA_EXISTS);
         }
         AvailableDate availableDate = dateFromDb.get();
