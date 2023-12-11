@@ -28,6 +28,12 @@ public class CustomerController {
         return customerService.getById(id);
     }
 
+    @GetMapping("/name/{name}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<CustomerResponse> getByName(@PathVariable("name") String name){
+        return customerService.getByName(name);
+    }
+
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
     public CustomerResponse save(@RequestBody CustomerRequest request){
