@@ -1,5 +1,6 @@
 package com.nidaonder.VetManagementSystem.dto.response;
 
+import com.nidaonder.VetManagementSystem.entities.Doctor;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,6 +12,6 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class AvailableDateResponse {
     private long id;
-    private LocalDate appointmentDate;
-    private long doctorId;
+    private LocalDate availableDate;
+    private Doctor doctor;
 }

@@ -1,7 +1,9 @@
 package com.nidaonder.VetManagementSystem.dto.request;
 
+import com.nidaonder.VetManagementSystem.entities.Doctor;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,7 +16,8 @@ import java.time.LocalDate;
 public class AvailableDateRequest {
 
     @Temporal(TemporalType.DATE)
-    private LocalDate appointmentDate;
+    private LocalDate availableDate;
 
-    private long doctorId;
+    @NotNull
+    private Doctor doctor; // private long doctorId yazıyordu değiştim.
 }

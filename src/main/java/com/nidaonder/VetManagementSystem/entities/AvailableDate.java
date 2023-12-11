@@ -1,6 +1,7 @@
 package com.nidaonder.VetManagementSystem.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,9 +21,10 @@ public class AvailableDate {
     private long id;
 
     @Temporal(TemporalType.DATE)
-    private LocalDate appointmentDate;
+    private LocalDate availableDate;
 
     @ManyToOne
     @JoinColumn(name = "doctor_id", referencedColumnName = "doctor_id")
+    @NotNull
     private Doctor doctor;
 }
