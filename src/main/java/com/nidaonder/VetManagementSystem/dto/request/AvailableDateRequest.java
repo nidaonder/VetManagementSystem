@@ -19,5 +19,5 @@ public class AvailableDateRequest {
     private LocalDate availableDate;
 
     @NotNull
-    private Doctor doctor; // private long doctorId yazıyordu değiştim.
+    private Doctor doctor;
 }
