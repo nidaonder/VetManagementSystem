@@ -1,6 +1,8 @@
-package com.nidaonder.VetManagementSystem.entities;
+package com.nidaonder.VetManagementSystem.dto.request;
 
-import jakarta.persistence.*;
+import com.nidaonder.VetManagementSystem.entities.Animal;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
@@ -11,17 +13,10 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
-@Entity
-@Table(name = "vaccine")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Vaccine {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "vaccine_id", columnDefinition = "serial")
-    private long id;
+public class VaccineRequest {
 
     @NotBlank
     private String name;
@@ -31,15 +26,14 @@ public class Vaccine {
     private String code;
 
     @Temporal(TemporalType.DATE)
-    @PastOrPresent
     @NotNull
+    @PastOrPresent
     private LocalDate protectionStartDate;
 
     @Temporal(TemporalType.DATE)
     @NotNull
     private LocalDate protectionFinishDate;
 
-    @ManyToOne
-    @JoinColumn(name = "animal_id", referencedColumnName = "animal_id")
+    @NotNull
     private Animal animal;
 }
