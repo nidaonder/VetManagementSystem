@@ -1,5 +1,6 @@
 package com.nidaonder.VetManagementSystem.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Past;
@@ -8,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "animals")
@@ -47,4 +49,8 @@ public class Animal {
     @ManyToOne
     @JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
     private Customer customer;
+
+    @OneToMany(mappedBy = "animal")
+    @JsonIgnore
+    private List<Vaccine> vaccine;
 }
