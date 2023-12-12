@@ -6,4 +6,5 @@ public class Msg {
     public static final String OK = "Transaction Successful";
     public static final String NOT_FOUND = "Data Not Found";
     public static final String DATA_EXISTS = "This data is already saved in the system!";
+    public static final String PROTECTION_CONTINUES = "The vaccine protection period has not yet expired!";
 }
