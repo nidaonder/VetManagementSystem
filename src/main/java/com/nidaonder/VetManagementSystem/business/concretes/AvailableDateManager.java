@@ -72,6 +72,11 @@ public class AvailableDateManager implements IAvailableDateService {
     }
 
     @Override
+    public List<AvailableDateResponse> getDoctorAvailableDateInRange(long doctorId, LocalDate startDate, LocalDate endDate) {
+        return availableDateMapper.asOutput(availableDateRepo.findByDoctorIdAndAvailableDateBetween(doctorId, startDate, endDate));
+    }
+
+    @Override
     public boolean existByDoctorIdAndAvailableDate(long doctorId, LocalDate availableDate) {
         return this.availableDateRepo.existsByDoctorIdAndAvailableDate(doctorId, availableDate);
     }

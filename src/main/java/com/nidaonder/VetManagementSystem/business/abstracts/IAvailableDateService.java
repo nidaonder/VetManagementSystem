@@ -13,4 +13,5 @@ public interface IAvailableDateService {
     public AvailableDateResponse update(long id, AvailableDateRequest request);
     public void deleteById(long id);
     boolean existByDoctorIdAndAvailableDate(long doctorId, LocalDate availableDate);
+    public List<AvailableDateResponse> getDoctorAvailableDateInRange(long doctorId, LocalDate startDate, LocalDate endDate);
 }
