@@ -76,4 +76,12 @@ public class AnimalManager implements IAnimalService {
             throw new NotFoundException(Msg.NOT_FOUND);
         }
     }
+
+    @Override
+    public List<AnimalResponse> getByName(String name) {
+        if (animalRepo.findByNameIgnoreCase(name).isEmpty()){
+            throw new NotFoundException(Msg.NOT_FOUND);
+        }
+        return animalMapper.asOutput(animalRepo.findByNameIgnoreCase(name));
+    }
 }

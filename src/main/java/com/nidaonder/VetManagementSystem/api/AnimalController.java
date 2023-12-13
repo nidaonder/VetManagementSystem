@@ -34,6 +34,12 @@ public class AnimalController {
         return animalService.getByCustomer(id);
     }
 
+    @GetMapping("name/{name}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<AnimalResponse> getByName(@PathVariable("name") String name){
+        return animalService.getByName(name);
+    }
+
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
     public AnimalResponse save(@RequestBody AnimalRequest request){

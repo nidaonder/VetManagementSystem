@@ -12,4 +12,5 @@ public interface IAnimalService {
     public AnimalResponse create(AnimalRequest request);
     public AnimalResponse update(long id, AnimalRequest request);
     public void deleteById(long id);
+    public List<AnimalResponse> getByName(String name);
 }
