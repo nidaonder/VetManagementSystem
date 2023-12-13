@@ -80,11 +80,20 @@ public class AppointmentManager implements IAppointmentService {
         return !appointmentRepo.existsByDoctorIdAndAppointmentDate(doctorId, appointmentDate);
     }
 
-    // Değerledirme 23 : Randevular hayvanlara göre listeleniyor.
+    // Değerledirme 23 : Randevular hayvanlara ve girilen tarihlere göre listeleniyor.
     @Override
     public List<AppointmentResponse> getAnimalAppointmentDateInRange(long animalId, LocalDate startDate, LocalDate endDate) {
         LocalDateTime startDateTime = LocalDateTime.of(startDate, LocalTime.MIN);
         LocalDateTime endDateTime = LocalDateTime.of(endDate, LocalTime.MAX);
         return appointmentMapper.asOutput(appointmentRepo.findByAnimalIdAndAppointmentDateBetween(animalId, startDateTime, endDateTime));
+    }
+
+
+    // Değerlendirme 24 : Randevular doktora ve girilen tarihlere göre listeleniyor
+    @Override
+    public List<AppointmentResponse> getDoctorAppointmentDateInRange(long doctorId, LocalDate startDate, LocalDate endDate) {
+        LocalDateTime startDateTime = LocalDateTime.of(startDate, LocalTime.MIN);
+        LocalDateTime endDateTime = LocalDateTime.of(endDate, LocalTime.MAX);
+        return appointmentMapper.asOutput(appointmentRepo.findByDoctorIdAndAppointmentDateBetween(doctorId, startDateTime, endDateTime));
     }
 }

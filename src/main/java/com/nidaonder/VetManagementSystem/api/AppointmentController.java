@@ -39,6 +39,16 @@ public class AppointmentController {
         return appointmentService.getAnimalAppointmentDateInRange(animalId, startDate, endDate);
     }
 
+    @GetMapping("/doctor/date-range")
+    @ResponseStatus(HttpStatus.OK)
+    public List<AppointmentResponse> getDoctorAppointmentDateInRange(
+            @RequestParam long doctorId,
+            @RequestParam LocalDate startDate,
+            @RequestParam LocalDate endDate
+    ){
+        return appointmentService.getDoctorAppointmentDateInRange(doctorId, startDate, endDate);
+    }
+
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
     public AppointmentResponse save(@RequestBody AppointmentRequest request){

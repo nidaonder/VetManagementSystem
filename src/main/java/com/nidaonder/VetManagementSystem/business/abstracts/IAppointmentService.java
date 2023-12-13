@@ -15,4 +15,5 @@ public interface IAppointmentService {
     public void deleteById(long id);
     public boolean isDoctorAvailableAtTime(long doctorId, LocalDateTime appointmentDate);
     public List<AppointmentResponse> getAnimalAppointmentDateInRange(long animalId, LocalDate startDate, LocalDate endDate);
+    public List<AppointmentResponse> getDoctorAppointmentDateInRange(long doctorId, LocalDate startDate, LocalDate endDate);
 }
