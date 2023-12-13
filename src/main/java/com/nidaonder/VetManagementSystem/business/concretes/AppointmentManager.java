@@ -6,20 +6,16 @@ import com.nidaonder.VetManagementSystem.core.exception.DataExistsException;
 import com.nidaonder.VetManagementSystem.core.exception.NotFoundException;
 import com.nidaonder.VetManagementSystem.core.utilities.Msg;
 import com.nidaonder.VetManagementSystem.dao.AppointmentRepo;
-import com.nidaonder.VetManagementSystem.dao.AvailableDateRepo;
 import com.nidaonder.VetManagementSystem.dto.request.AppointmentRequest;
 import com.nidaonder.VetManagementSystem.dto.response.AppointmentResponse;
 import com.nidaonder.VetManagementSystem.entities.Appointment;
-import com.nidaonder.VetManagementSystem.entities.AvailableDate;
-import com.nidaonder.VetManagementSystem.entities.Doctor;
 import com.nidaonder.VetManagementSystem.mapper.AppointmentMapper;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Collections;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -81,5 +77,12 @@ public class AppointmentManager implements IAppointmentService {
     @Override
     public boolean isDoctorAvailableAtTime(long doctorId, LocalDateTime appointmentDate) {
         return !appointmentRepo.existsByDoctorIdAndAppointmentDate(doctorId, appointmentDate);
+    }
+
+    @Override
+    public List<AppointmentResponse> getAnimalAppointmentDateInRange(long animalId, LocalDate startDate, LocalDate endDate) {
+        LocalDateTime startDateTime = LocalDateTime.of(startDate, LocalTime.MIN);
+        LocalDateTime endDateTime = LocalDateTime.of(endDate, LocalTime.MAX);
+        return appointmentMapper.asOutput(appointmentRepo.findByAnimalIdAndAppointmentDateBetween(animalId, startDateTime, endDateTime));
     }
 }

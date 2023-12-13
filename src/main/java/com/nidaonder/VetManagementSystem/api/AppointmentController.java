@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -26,6 +27,16 @@ public class AppointmentController {
     @ResponseStatus(HttpStatus.OK)
     public AppointmentResponse getById(@PathVariable("id") long id){
         return appointmentService.getById(id);
+    }
+
+    @GetMapping("/animal/date-range")
+    @ResponseStatus(HttpStatus.OK)
+    public List<AppointmentResponse> getAnimalAppointmentDateInRange(
+            @RequestParam long animalId,
+            @RequestParam LocalDate startDate,
+            @RequestParam LocalDate endDate
+            ){
+        return appointmentService.getAnimalAppointmentDateInRange(animalId, startDate, endDate);
     }
 
     @PostMapping()
