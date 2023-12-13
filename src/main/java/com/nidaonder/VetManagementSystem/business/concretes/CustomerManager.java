@@ -32,8 +32,6 @@ public class CustomerManager implements ICustomerService {
         return customerMapper.asOutput(customerRepo.findById(id).orElseThrow(() -> new NotFoundException(Msg.NOT_FOUND)));
     }
 
-
-    // Bu kısımdan emin değilim!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     @Override
     public List<CustomerResponse> getByName(String name) {
         if (customerRepo.findByNameIgnoreCase(name).isEmpty()){

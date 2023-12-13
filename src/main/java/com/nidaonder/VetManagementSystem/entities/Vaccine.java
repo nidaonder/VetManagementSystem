@@ -39,7 +39,7 @@ public class Vaccine {
     @NotNull
     private LocalDate protectionFinishDate;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "animal_id", referencedColumnName = "animal_id")
     private Animal animal;
 }
