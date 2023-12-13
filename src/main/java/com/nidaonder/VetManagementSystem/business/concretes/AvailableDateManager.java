@@ -70,4 +70,9 @@ public class AvailableDateManager implements IAvailableDateService {
             throw new NotFoundException(Msg.NOT_FOUND);
         }
     }
+
+    @Override
+    public boolean existByDoctorIdAndAvailableDate(long doctorId, LocalDate availableDate) {
+        return this.availableDateRepo.existsByDoctorIdAndAvailableDate(doctorId, availableDate);
+    }
 }

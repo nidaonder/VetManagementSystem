@@ -36,7 +36,11 @@ public class Doctor {
 
     private String city;
 
-    @OneToMany(mappedBy = "doctor")
+    @OneToMany(mappedBy = "doctor", fetch = FetchType.EAGER)
     @JsonIgnore
     private List<AvailableDate> availableDate;
+
+    @OneToMany(mappedBy = "doctor", fetch = FetchType.EAGER)
+    @JsonIgnore
+    private List<Appointment> appointment;
 }

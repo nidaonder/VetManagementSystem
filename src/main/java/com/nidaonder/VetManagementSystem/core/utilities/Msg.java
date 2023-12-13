@@ -7,4 +7,5 @@ public class Msg {
     public static final String NOT_FOUND = "Data Not Found";
     public static final String DATA_EXISTS = "This data is already saved in the system!";
     public static final String PROTECTION_CONTINUES = "The vaccine protection period has not yet expired!";
+    public static final String APPOINMENT_NOT_FOUND = "The doctor is not working on this date! / Another appointment is available at the entered time";
 }
