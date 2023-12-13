@@ -42,3 +42,23 @@
 | /api/v1/customers/{id}        | PUT       | The customer of a specific id is updated. |
 | /api/v1/customers/{id}        | DELETE    | The customer of a specific id is deleted. |
 
+### Doctors
+| Endpoint             | HTTP Code | Description                             |
+|----------------------|-----------|-----------------------------------------|
+| /api/v1/doctors      | GET       | List of all doctors.                    |
+| /api/v1/doctors/{id} | GET       | Doctor by id number.                    |
+| /api/v1/doctors      | POST      | Add new Doctor.                         |
+| /api/v1/doctors/{id} | PUT       | The doctor of a specific id is updated. |
+| /api/v1/doctors/{id} | DELETE    | The doctor of a specific id is deleted. |
+
+### Vaccines
+| Endpoint                     | HTTP Code | Description                                                 |
+|------------------------------|-----------|-------------------------------------------------------------|
+| /api/v1/vaccines             | GET       | List of all vaccines.                                       |
+| /api/v1/vaccines/{id}        | GET       | Vaccine by id number.                                       |
+| /api/v1/vaccines/animal/{id} | GET       | The list of vaccines for a specific animal.                 |
+| /api/v1/vaccines/date-range  | GET       | The list of vaccines expiring within a specific time range. |
+| /api/v1/vaccines             | POST      | Add new Vaccine.                                            |
+| /api/v1/vaccines             | PUT       | The vaccine of a specific id is updated.                    |
+| /api/v1/vaccines             | DELETE    | The vaccine of a specific id is deleted.                    |
+
