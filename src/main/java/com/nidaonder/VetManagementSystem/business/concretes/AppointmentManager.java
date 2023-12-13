@@ -37,12 +37,13 @@ public class AppointmentManager implements IAppointmentService {
         return appointmentMapper.asOutput(appointmentRepo.findById(id).orElseThrow(() -> new NotFoundException(Msg.NOT_FOUND)));
     }
 
+    // Değerlendirme 14 : Randevu kaydediliyor.
     @Override
     public AppointmentResponse create(AppointmentRequest request) {
-        if (!availableDateManager.existByDoctorIdAndAvailableDate(request.getDoctor().getId(), request.getAppointmentDate().toLocalDate())){
+        if (!availableDateManager.existByDoctorIdAndAvailableDate(request.getDoctor().getId(), request.getAppointmentDate().toLocalDate())){ // Değerledirme 22
             throw new NotFoundException(Msg.APPOINMENT_NOT_FOUND);
         }
-        if (!isDoctorAvailableAtTime(request.getDoctor().getId(), request.getAppointmentDate())){
+        if (!isDoctorAvailableAtTime(request.getDoctor().getId(), request.getAppointmentDate())){ // Değerledirme 22
             throw new NotFoundException(Msg.APPOINMENT_NOT_FOUND);
         }
         Appointment appointmentSaved = appointmentRepo.save(appointmentMapper.asEntity(request));
@@ -79,6 +80,7 @@ public class AppointmentManager implements IAppointmentService {
         return !appointmentRepo.existsByDoctorIdAndAppointmentDate(doctorId, appointmentDate);
     }
 
+    // Değerledirme 23 : Randevular hayvanlara göre listeleniyor.
     @Override
     public List<AppointmentResponse> getAnimalAppointmentDateInRange(long animalId, LocalDate startDate, LocalDate endDate) {
         LocalDateTime startDateTime = LocalDateTime.of(startDate, LocalTime.MIN);

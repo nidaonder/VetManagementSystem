@@ -32,6 +32,8 @@ public class CustomerManager implements ICustomerService {
         return customerMapper.asOutput(customerRepo.findById(id).orElseThrow(() -> new NotFoundException(Msg.NOT_FOUND)));
     }
 
+
+    // Değerledirme 17 : Hayvan sahipleri isme göre filtrelendiriliyor.
     @Override
     public List<CustomerResponse> getByName(String name) {
         if (customerRepo.findByNameIgnoreCase(name).isEmpty()){
@@ -40,6 +42,7 @@ public class CustomerManager implements ICustomerService {
         return customerMapper.asOutput(customerRepo.findByNameIgnoreCase(name));
     }
 
+    // Değerlendirme 10: Hayvan sahibi kaydediliyor.
     @Override
     public CustomerResponse create(CustomerRequest request) {
         Optional<Customer> isCustomerExist = customerRepo.findByMail(request.getMail());

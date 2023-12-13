@@ -34,6 +34,7 @@ public class AvailableDateManager implements IAvailableDateService {
         return availableDateMapper.asOutput(availableDateRepo.findById(id).orElseThrow(() -> new NotFoundException(Msg.NOT_FOUND)));
     }
 
+    // Değerlendirme 13 : Doktor müsait günü kaydediliyor.
     @Override
     public AvailableDateResponse create(AvailableDateRequest request) {
         Optional<AvailableDate> isDateExist = availableDateRepo.findByDoctorIdAndAvailableDate(request.getDoctor().getId(), request.getAvailableDate());
