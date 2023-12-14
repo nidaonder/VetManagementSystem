@@ -2,7 +2,9 @@
 This project is a system that simulates the management of daily operations of veterinary clinics. It includes basic 
 features such as recording animal and owner information, vaccine management, appointment creation and doctor 
 management, and management of doctors available days.
+
 It is a RestAPI project written in Java and using the Springboot framework.
+
 The endpoints used and their detailed explanations are added as a table.
 
 ## Technologies
