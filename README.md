@@ -1,7 +1,7 @@
 # Veterinary Management System
 This project is a system that simulates the management of daily operations of veterinary clinics. It includes basic 
 features such as recording animal and owner information, vaccine management, appointment creation and doctor 
-management, and management of doctors available days.
+management, and management of doctors available days.The UML diagram of the project has been added as a png file.
 
 It is a RestAPI project written in Java and using the Spring Boot framework.
 
