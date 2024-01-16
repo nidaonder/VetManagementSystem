@@ -33,7 +33,6 @@ public class AnimalManager implements IAnimalService {
     }
 
 
-    // Değerledirme 18 : Bir hayvan sahibine ait tüm hayvanlar listeleniyor.
     @Override
     public List<AnimalResponse> getByCustomer(long id) {
         if (animalRepo.findByCustomerId(id).isEmpty()){
@@ -42,7 +41,6 @@ public class AnimalManager implements IAnimalService {
         return animalMapper.asOutput(animalRepo.findByCustomerId(id));
     }
 
-    // Değerlendirme 11 : Hayvan kaydediliyor.
     @Override
     public AnimalResponse create(AnimalRequest request) {
         Optional<Animal> isAnimalExist = animalRepo.findByCustomerIdAndName(request.getCustomer().getId(), request.getName());
@@ -80,7 +78,6 @@ public class AnimalManager implements IAnimalService {
         }
     }
 
-    // Değerledirme 16 : Hayvanlar isme göre filtrelendiriliyor.
     @Override
     public List<AnimalResponse> getByName(String name) {
         if (animalRepo.findByNameIgnoreCase(name).isEmpty()){

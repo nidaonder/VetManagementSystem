@@ -32,7 +32,6 @@ public class DoctorManager implements IDoctorService {
         return doctorMapper.asOutput(doctorRepo.findById(id).orElseThrow(() -> new NotFoundException(Msg.NOT_FOUND)));
     }
 
-    // Değerlendirme 12 : Doktor kaydediliyor.
     @Override
     public DoctorResponse create(DoctorRequest request) {
         Optional<Doctor> isDoctorExist = doctorRepo.findByMail(request.getMail());

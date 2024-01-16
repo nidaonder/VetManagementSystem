@@ -33,7 +33,6 @@ public class VaccineManager implements IVaccineService {
         return vaccineMapper.asOutput(vaccineRepo.findById(id).orElseThrow(() -> new NotFoundException(Msg.NOT_FOUND)));
     }
 
-    // Değerledirme 20 : Belirli bir hayvana ait tüm aşılar listeleniyor.
     @Override
     public List<VaccineResponse> getByAnimal(long id) {
         if (vaccineRepo.findByAnimalId(id).isEmpty()){
@@ -42,13 +41,11 @@ public class VaccineManager implements IVaccineService {
         return vaccineMapper.asOutput(vaccineRepo.findByAnimalId(id));
     }
 
-    // Değerledirme 21 : Girilen tarih aralığına göre listeleniyor.
     @Override
     public List<VaccineResponse> getVaccinesInDateRange(LocalDate startDate, LocalDate endDate) {
         return vaccineMapper.asOutput(vaccineRepo.findByProtectionFinishDateBetween(startDate, endDate));
     }
 
-    // Değerledirme 15 : Hayvana ait aşı kaydediliyor.
     @Override
     public VaccineResponse create(VaccineRequest request) {
         Optional<Vaccine> isVaccineExist = vaccineRepo.findByNameAndCodeAndAnimalId(request.getName(),

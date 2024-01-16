@@ -34,7 +34,6 @@ public class AvailableDateManager implements IAvailableDateService {
         return availableDateMapper.asOutput(availableDateRepo.findById(id).orElseThrow(() -> new NotFoundException(Msg.NOT_FOUND)));
     }
 
-    // Değerlendirme 13 : Doktor müsait günü kaydediliyor.
     @Override
     public AvailableDateResponse create(AvailableDateRequest request) {
         Optional<AvailableDate> isDateExist = availableDateRepo.findByDoctorIdAndAvailableDate(request.getDoctor().getId(), request.getAvailableDate());
@@ -72,12 +71,6 @@ public class AvailableDateManager implements IAvailableDateService {
         }
     }
 
-
-    /* Değerlendirme 24 : Müsait günler doktora ve girilen tarihlere göre listeleniyor
-    (Bu kısmı tam anlayamadım. Randuvu yönetimi kısmında parantez içinde randevu için kliniği arayan müşterilerin
-     doktor ve gün taleplerinde uygunluk olup olmadığını sorgulamak için kullanılacaktır. Dendiği için iki taraf
-     için de uyguladım.)
-     */
     @Override
     public List<AvailableDateResponse> getDoctorAvailableDateInRange(long doctorId, LocalDate startDate, LocalDate endDate) {
         return availableDateMapper.asOutput(availableDateRepo.findByDoctorIdAndAvailableDateBetween(doctorId, startDate, endDate));
