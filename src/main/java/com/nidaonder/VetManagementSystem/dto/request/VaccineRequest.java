@@ -1,6 +1,7 @@
 package com.nidaonder.VetManagementSystem.dto.request;
 
 import com.nidaonder.VetManagementSystem.entities.Animal;
+import com.nidaonder.VetManagementSystem.entities.Report;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.NotBlank;
@@ -36,4 +37,7 @@ public class VaccineRequest {
 
     @NotNull
     private Animal animal;
+
+    @NotNull
+    private Report report;
 }
