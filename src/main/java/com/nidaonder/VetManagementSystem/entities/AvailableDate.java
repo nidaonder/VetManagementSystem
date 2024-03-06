@@ -20,10 +20,9 @@ public class AvailableDate {
     @Column(name = "available_date_id", columnDefinition = "serial")
     private long id;
 
-    @Temporal(TemporalType.DATE)
     private LocalDate availableDate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "doctor_id", referencedColumnName = "doctor_id")
     @NotNull
     private Doctor doctor;
