@@ -12,7 +12,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-@Table(name = "animals")
+@Table(name = "animal")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -46,7 +46,7 @@ public class Animal {
     @Past
     private LocalDate dateOfBirth;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
     private Customer customer;
 

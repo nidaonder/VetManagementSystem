@@ -23,7 +23,7 @@ public class AvailableDate {
     @Temporal(TemporalType.DATE)
     private LocalDate availableDate;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "doctor_id", referencedColumnName = "doctor_id")
     @NotNull
     private Doctor doctor;

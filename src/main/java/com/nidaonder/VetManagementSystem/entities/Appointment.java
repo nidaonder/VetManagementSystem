@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "appointments")
+@Table(name = "appointment")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -22,11 +22,15 @@ public class Appointment {
     @Column(columnDefinition = "TIMESTAMP")
     private LocalDateTime appointmentDate;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "animal_id", referencedColumnName = "animal_id")
     private Animal animal;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "doctor_id", referencedColumnName = "doctor_id")
     private Doctor doctor;
+
+    @OneToOne
+    @JoinColumn(name = "report_id", referencedColumnName = "report_id" )
+    private Report report;
 }
