@@ -33,7 +33,8 @@ public class Report {
     @NotNull
     private Double price;
 
-    @OneToOne(mappedBy = "report")
+    @OneToOne
+    @JoinColumn(name = "appointment_id", referencedColumnName = "appointment_id")
     private Appointment appointment;
 
     @OneToMany(mappedBy = "report", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
