@@ -2,6 +2,7 @@ package com.nidaonder.VetManagementSystem.dto.response;
 
 import com.nidaonder.VetManagementSystem.entities.Animal;
 import com.nidaonder.VetManagementSystem.entities.Doctor;
+import com.nidaonder.VetManagementSystem.entities.Report;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,4 +17,5 @@ public class AppointmentResponse {
     private LocalDateTime appointmentDate;
     private Animal animal;
     private Doctor doctor;
+    private Report report;
 }

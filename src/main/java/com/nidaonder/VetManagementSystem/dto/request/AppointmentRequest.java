@@ -2,6 +2,7 @@ package com.nidaonder.VetManagementSystem.dto.request;
 
 import com.nidaonder.VetManagementSystem.entities.Animal;
 import com.nidaonder.VetManagementSystem.entities.Doctor;
+import com.nidaonder.VetManagementSystem.entities.Report;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,4 +23,6 @@ public class AppointmentRequest {
 
     @NotNull
     private Doctor doctor;
+
+    private Report report;
 }

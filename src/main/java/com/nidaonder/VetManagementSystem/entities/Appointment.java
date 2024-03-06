@@ -1,5 +1,6 @@
 package com.nidaonder.VetManagementSystem.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,15 +23,19 @@ public class Appointment {
     @Column(columnDefinition = "TIMESTAMP")
     private LocalDateTime appointmentDate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "animal_id", referencedColumnName = "animal_id")
     private Animal animal;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "doctor_id", referencedColumnName = "doctor_id")
     private Doctor doctor;
 
-    @OneToOne
-    @JoinColumn(name = "report_id", referencedColumnName = "report_id" )
+//    @OneToOne
+//    @JoinColumn(name = "report_id", referencedColumnName = "report_id" )
+//    private Report report;
+
+    @OneToOne(mappedBy = "appointment")
+    @JsonIgnore
     private Report report;
 }
