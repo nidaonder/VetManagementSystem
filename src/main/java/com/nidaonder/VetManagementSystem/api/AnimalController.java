@@ -16,7 +16,7 @@ public class AnimalController {
 
     private final IAnimalService animalService;
 
-    @GetMapping()
+    @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<AnimalResponse> findAll(){
         return animalService.findAll();
@@ -34,13 +34,13 @@ public class AnimalController {
         return animalService.getByCustomer(id);
     }
 
-    @GetMapping("name/{name}")
+    @GetMapping("/name/{name}")
     @ResponseStatus(HttpStatus.OK)
     public List<AnimalResponse> getByName(@PathVariable("name") String name){
         return animalService.getByName(name);
     }
 
-    @PostMapping()
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public AnimalResponse save(@RequestBody AnimalRequest request){
         return animalService.create(request);

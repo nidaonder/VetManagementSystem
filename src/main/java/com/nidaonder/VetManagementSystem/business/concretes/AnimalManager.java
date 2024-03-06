@@ -28,13 +28,13 @@ public class AnimalManager implements IAnimalService {
     }
 
     @Override
-    public AnimalResponse getById(long id) {
+    public AnimalResponse getById(Long id) {
         return animalMapper.asOutput(animalRepo.findById(id).orElseThrow(() -> new NotFoundException(Msg.NOT_FOUND)));
     }
 
 
     @Override
-    public List<AnimalResponse> getByCustomer(long id) {
+    public List<AnimalResponse> getByCustomer(Long id) {
         if (animalRepo.findByCustomerId(id).isEmpty()){
             throw new NotFoundException(Msg.NOT_FOUND);
         }
@@ -52,7 +52,7 @@ public class AnimalManager implements IAnimalService {
     }
 
     @Override
-    public AnimalResponse update(long id, AnimalRequest request) {
+    public AnimalResponse update(Long id, AnimalRequest request) {
         Optional<Animal> animalFromDb = animalRepo.findById(id);
         if (animalFromDb.isEmpty()){
             throw new NotFoundException(Msg.NOT_FOUND);
@@ -69,7 +69,7 @@ public class AnimalManager implements IAnimalService {
     }
 
     @Override
-    public void deleteById(long id) {
+    public void deleteById(Long id) {
         Optional<Animal> animalFromDb = animalRepo.findById(id);
         if (animalFromDb.isPresent()){
             animalRepo.delete(animalFromDb.get());
