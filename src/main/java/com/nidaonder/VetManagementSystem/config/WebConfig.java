@@ -11,8 +11,7 @@ public class WebConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
                 .allowedOrigins(
-                        "https://vetapp-frontend-kappa.vercel.app",
-                        "https://vetapp-frontend-408ivgeyj-nidas-projects-0b1305ad.vercel.app"
+                        "https://vetapp-frontend-kappa.vercel.app"
                 )
                 .allowedMethods("GET", "POST", "PUT", "DELETE")
                 .allowCredentials(true);
