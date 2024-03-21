@@ -10,7 +10,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("https://vetapp-frontend-five.vercel.app/")
+                .allowedOrigins("https://vetapp-backend-4mcf.onrender.com")
                 .allowedMethods("GET", "POST", "PUT", "DELETE")
                 .allowCredentials(true);
     }
