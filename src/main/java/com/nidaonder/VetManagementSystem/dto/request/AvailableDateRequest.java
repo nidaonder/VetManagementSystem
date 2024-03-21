@@ -16,6 +16,7 @@ import java.time.LocalDate;
 public class AvailableDateRequest {
 
     @Temporal(TemporalType.DATE)
+    @NotNull
     private LocalDate availableDate;
 
     @NotNull

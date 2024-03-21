@@ -17,5 +17,4 @@ public class AppointmentResponse {
     private LocalDateTime appointmentDate;
     private Animal animal;
     private Doctor doctor;
-    private Report report;
 }

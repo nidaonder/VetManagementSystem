@@ -30,12 +30,4 @@ public class Appointment {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "doctor_id", referencedColumnName = "doctor_id")
     private Doctor doctor;
-
-//    @OneToOne
-//    @JoinColumn(name = "report_id", referencedColumnName = "report_id" )
-//    private Report report;
-
-    @OneToOne(mappedBy = "appointment")
-    @JsonIgnore
-    private Report report;
 }

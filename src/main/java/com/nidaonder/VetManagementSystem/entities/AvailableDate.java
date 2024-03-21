@@ -20,6 +20,7 @@ public class AvailableDate {
     @Column(name = "available_date_id", columnDefinition = "serial")
     private long id;
 
+    @NotNull
     private LocalDate availableDate;
 
     @ManyToOne(fetch = FetchType.EAGER)

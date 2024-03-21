@@ -23,6 +23,4 @@ public class AppointmentRequest {
 
     @NotNull
     private Doctor doctor;
-
-    private Report report;
 }
